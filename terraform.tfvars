@@ -1,6 +1,7 @@
 terragrunt = {
   remote_state {
     backend = "s3"
+
     config {
       bucket         = "lsstsqre-tf-state-test"
       key            = "${path_relative_to_include()}/terraform.tfstate"
@@ -23,12 +24,14 @@ terragrunt = {
   terraform {
     # do not prompt for confirmation when running apply
     extra_arguments "auto_apply" {
-      commands = ["apply"]
+      commands  = ["apply"]
       arguments = ["-auto-approve"]
     }
   }
 }
 
 google_project = "plasma-geode-127520"
+
 aws_zone_id = "Z3TH0HRSNU67AM"
+
 domain_name = "lsst.codes"
