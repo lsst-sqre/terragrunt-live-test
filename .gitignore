@@ -1,1 +1,3 @@
+bin/
+downloads/
 .terragrunt-cache
