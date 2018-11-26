@@ -4,7 +4,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::git@github.com:jhoblitt/terraform-efd-kafka.git//?ref=plumbing/deploy"
+    source = "git::https://github.com/jhoblitt/terraform-efd-kafka.git?ref=plumbing/deploy"
   }
 }
 
