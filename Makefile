@@ -9,7 +9,7 @@ TF_ZIP_FILE := terraform_$(TF_VER)_$(UNAME)_$(ARCH).zip
 TF_ZIP_DL := $(DL_DIR)/$(TF_ZIP_FILE)
 TF_BIN := $(BIN_DIR)/terraform
 
-TG_VER = 0.17.2
+TG_VER = 0.17.3
 TG_FILE := terragrunt_$(UNAME)_$(ARCH)
 TG_FILE_DL := $(DL_DIR)/$(TG_FILE)-v$(TG_VER)
 TG_BIN := $(BIN_DIR)/terragrunt
