@@ -53,5 +53,14 @@ tf-fmt:
 	$(TF_BIN) fmt --check=true --diff=true
 
 .PHONY: clean
-clean:
+clean: tls-clean
 	-rm -rf $(BIN_DIR)
+
+.PHONY: tls
+tls: lsst-certs
+
+tls-clean:
+	-rm -rf lsst-certs
+
+lsst-certs:
+	git clone ~/Dropbox/lsst-sqre/git/lsst-certs.git/ lsst-certs
