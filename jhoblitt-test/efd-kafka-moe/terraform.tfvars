@@ -54,6 +54,7 @@ terragrunt = {
 }
 
 env_name = "jhoblitt-moe"
+dns_enable = true
 grafana_oauth_client_id = ""
 grafana_oauth_client_secret = ""
 grafana_oauth_team_ids = "1936535"
