@@ -1,5 +1,6 @@
 bin/
+creds.sh
 downloads/
 .helm
-.terragrunt-cache
 lsst-certs
+.terragrunt-cache
