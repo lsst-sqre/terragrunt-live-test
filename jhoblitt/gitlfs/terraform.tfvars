@@ -56,3 +56,4 @@ dns_enable = true
 google_project = "plasma-geode-127520"
 aws_zone_id = "Z3TH0HRSNU67AM"
 domain_name = "lsst.codes"
+s3_force_destroy = true
