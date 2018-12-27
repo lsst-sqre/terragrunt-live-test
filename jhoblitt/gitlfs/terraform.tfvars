@@ -17,7 +17,8 @@ terragrunt = {
     }
 
     before_hook "tf_plugins" {
-      commands = ["init"]
+      commands = ["init", "init-from-module"]
+
       run_on_error = false
 
       execute = [
@@ -27,7 +28,8 @@ terragrunt = {
 
     # helm requires manual init
     before_hook "helm_init" {
-      commands = ["init"]
+      commands = ["init", "init-from-module"]
+
       run_on_error = false
 
       execute = [
