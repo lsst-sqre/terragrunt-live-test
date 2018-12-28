@@ -22,7 +22,7 @@ terragrunt = {
       run_on_error = false
 
       execute = [
-        "make"
+        "bash", "-c", "cd ${get_tfvars_dir()}; make"
       ]
     }
 
