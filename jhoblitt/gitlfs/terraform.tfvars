@@ -27,13 +27,33 @@ terragrunt = {
     }
 
     # helm requires manual init
-    before_hook "helm_init" {
+    before_hook "helm_init_1" {
       commands = ["init", "init-from-module"]
 
       run_on_error = false
 
       execute = [
-        "helm", "init", "--home", "${get_tfvars_dir()}/.helm", "--client-only",
+        "helm", "init", "--home", "${get_tfvars_dir()}/.helm", "--client-only"
+      ]
+    }
+
+    before_hook "helm_init_2" {
+      commands = ["init"]
+
+      run_on_error = false
+
+      execute = [
+        "helm", "repo", "--home", "${get_tfvars_dir()}/.helm", "update"
+      ]
+    }
+
+    after_hook "helm_deinit" {
+      commands = ["destroy"]
+
+      run_on_error = false
+
+      execute = [
+        "rm", "-rf", "${get_tfvars_dir()}/.helm"
       ]
     }
 
