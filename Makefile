@@ -14,7 +14,7 @@ TG_FILE := terragrunt_$(UNAME)_$(ARCH)
 TG_FILE_DL := $(DL_DIR)/$(TG_FILE)-v$(TG_VER)
 TG_BIN := $(BIN_DIR)/terragrunt
 
-HELM_VER = 2.9.0
+HELM_VER = 2.11.0
 HELM_ZIP_FILE := helm-v$(HELM_VER)-$(UNAME)-$(ARCH).tar.gz
 HELM_ZIP_DL := $(DL_DIR)/$(HELM_ZIP_FILE)
 HELM_BIN := $(BIN_DIR)/helm
