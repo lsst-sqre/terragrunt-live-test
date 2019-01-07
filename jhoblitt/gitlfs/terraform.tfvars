@@ -78,4 +78,4 @@ aws_zone_id = "Z3TH0HRSNU67AM"
 domain_name = "lsst.codes"
 s3_force_destroy = true
 github_org = "lsst"
-#gitlfs_image = "docker.io/lsstsqre/gitlfs-server:ge79f107"
+#gitlfs_image = "docker.io/lsstsqre/gitlfs-server:g7562fb8"
