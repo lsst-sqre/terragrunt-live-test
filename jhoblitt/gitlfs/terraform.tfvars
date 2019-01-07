@@ -4,8 +4,8 @@ terragrunt = {
   }
 
   terraform {
-    #source = "git::https://github.com/lsst-sqre/terraform-gitlfs.git/tf/?ref=master"
-    source = "/home/jhoblitt/github/terraform-gitlfs/tf"
+    source = "git::https://github.com/lsst-sqre/terraform-gitlfs.git/tf/?ref=master"
+    #source = "/home/jhoblitt/github/terraform-gitlfs/tf"
 
     # set HELM_HOME to prevent sharing helm state between deployments
     extra_arguments "helm_vars" {
