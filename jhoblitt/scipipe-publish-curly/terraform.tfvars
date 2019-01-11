@@ -7,6 +7,16 @@ terragrunt = {
     #source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=master"
     source = "/home/jhoblitt/github/terraform-scipipe-publish-larry/tf"
 
+    before_hook "make" {
+      commands = ["init", "init-from-module"]
+
+      run_on_error = false
+
+      execute = [
+        "bash", "-c", "cd ${get_tfvars_dir()}; make"
+      ]
+    }
+
     extra_arguments "tls" {
       commands = ["${get_terraform_commands_that_need_vars()}"]
 
