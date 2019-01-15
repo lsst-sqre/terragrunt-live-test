@@ -27,6 +27,10 @@ terragrunt = {
         TF_VAR_tls_crt_path = "${get_parent_tfvars_dir()}/../../lsst-certs/lsst.codes/2018/lsst.codes_chain.pem"
         TF_VAR_tls_key_path = "${get_parent_tfvars_dir()}/../../lsst-certs/lsst.codes/2018/lsst.codes.key"
         TF_VAR_tls_dhparam_path = "${get_parent_tfvars_dir()}/dhparam.pem"
+
+        TF_VAR_redirect_tls_crt_path = "${get_parent_tfvars_dir()}/../../lsst-certs/sw.lsstcorp.org/sw.lsstcorp.org.20170530_chain.pem"
+        TF_VAR_redirect_tls_key_path = "${get_parent_tfvars_dir()}/../../lsst-certs/sw.lsstcorp.org/sw.lsstcorp.org.20170530.key"
+        TF_VAR_redirect_tls_dhparam_path = "${get_parent_tfvars_dir()}/dhparam.pem"
       }
     }
   } # terraform
@@ -34,6 +38,7 @@ terragrunt = {
 
 aws_zone_id = "Z3TH0HRSNU67AM"
 domain_name = "lsst.codes"
+dns_enable = true
 env_name = "jhoblitt-curly"
 google_project = "plasma-geode-127520"
 pkgroot_storage_size = "100Gi"
