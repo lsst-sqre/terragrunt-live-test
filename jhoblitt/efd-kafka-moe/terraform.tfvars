@@ -4,7 +4,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::https://github.com/jhoblitt/terraform-efd-kafka.git//?ref=env/moe"
+    source = "git::https://github.com/jhoblitt/terraform-efd-kafka.git//?ref=master"
 
     extra_arguments "moar_faster" {
       commands = ["apply"]
