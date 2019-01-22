@@ -17,4 +17,3 @@ terragrunt = {
 }
 
 env_name = "jhoblitt-moe"
-google_project = "plasma-geode-127520"

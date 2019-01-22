@@ -27,11 +27,12 @@ terragrunt = {
       commands  = ["apply"]
       arguments = ["-auto-approve"]
     }
+
+    extra_arguments "bucket" {
+      commands = ["${get_terraform_commands_that_need_vars()}"]
+      optional_var_files = [
+        "${get_tfvars_dir()}/${find_in_parent_folders("common.tfvars", "ignore")}"
+      ]
+    }
   }
 }
-
-google_project = "plasma-geode-127520"
-
-aws_zone_id = "Z3TH0HRSNU67AM"
-
-domain_name = "lsst.codes"
