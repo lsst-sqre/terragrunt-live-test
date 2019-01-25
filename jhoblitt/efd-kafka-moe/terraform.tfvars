@@ -13,7 +13,7 @@ terragrunt = {
 
     # set HELM_HOME to prevent sharing helm state between deployments
     extra_arguments "helm_vars" {
-      commands = ["apply", "plan", "refresh", "destroy"]
+      commands = ["${get_terraform_commands_that_need_vars()}"]
       env_vars = {
         HELM_HOME = "${get_tfvars_dir()}/.helm"
       }
@@ -21,17 +21,27 @@ terragrunt = {
 
     # helm requires manual init
     before_hook "1_helm_init" {
-      commands = ["apply", "plan", "refresh", "destroy"]
+      commands = ["${get_terraform_commands_that_need_locking()}"]
       execute = [
         "helm", "init", "--home", "${get_tfvars_dir()}/.helm", "--client-only",
       ]
       run_on_error = false
     }
 
+    before_hook "2_helm_update" {
+      commands = ["init"]
+
+      run_on_error = false
+
+      execute = [
+        "helm", "repo", "--home", "${get_tfvars_dir()}/.helm", "update"
+      ]
+    }
+
     # the helm.helm_repository resource DOES NOT handle the repo existing in
     # the tf state but not existing in the local helm repo config.
-    before_hook "2_helm_repo_add" {
-      commands = ["apply", "plan", "refresh", "destroy"]
+    before_hook "3_helm_repo_add" {
+      commands = ["${get_terraform_commands_that_need_locking()}"]
       execute = [
         "helm", "repo", "add", "confluentinc",
         "https://raw.githubusercontent.com/lsst-sqre/cp-helm-charts/master",
