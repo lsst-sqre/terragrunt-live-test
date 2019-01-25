@@ -30,12 +30,10 @@ terragrunt = {
 
     before_hook "2_helm_update" {
       commands = ["init"]
-
-      run_on_error = false
-
       execute = [
         "helm", "repo", "--home", "${get_tfvars_dir()}/.helm", "update"
       ]
+      run_on_error = false
     }
 
     # the helm.helm_repository resource DOES NOT handle the repo existing in
