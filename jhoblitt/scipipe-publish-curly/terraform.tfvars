@@ -4,8 +4,7 @@ terragrunt = {
   }
 
   terraform {
-    #source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=master"
-    source = "/home/jhoblitt/github/terraform-scipipe-publish-larry/tf"
+    source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=master"
 
     before_hook "make" {
       commands = ["init", "init-from-module"]
