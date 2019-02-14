@@ -38,3 +38,4 @@ terragrunt = {
 dns_enable = true
 env_name = "jhoblitt-curly"
 pkgroot_storage_size = "100Gi"
+google_zone = "us-central1-d"
