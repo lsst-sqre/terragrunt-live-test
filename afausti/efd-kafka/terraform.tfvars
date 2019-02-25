@@ -42,10 +42,10 @@ terragrunt = {
 
     before_hook "2_helm_update" {
       commands = ["init"]
-      run_on_error = false
       execute = [
         "helm", "repo", "--home", "${get_tfvars_dir()}/.helm", "update"
       ]
+      run_on_error = false
     }
 
     # the helm.helm_repository resource DOES NOT handle the repo existing in
@@ -53,14 +53,22 @@ terragrunt = {
 
     before_hook "3_helm_repo_add" {
       commands = ["${get_terraform_commands_that_need_locking()}"]
-
       execute = [
         "helm", "repo", "add", "confluentinc",
-        "https://raw.githubusercontent.com/lsst-sqre/cp-helm-charts/tickets/DM-17531",
+        "https://raw.githubusercontent.com/lsst-sqre/cp-helm-charts/master"
       ]
-
       run_on_error = false
     }
+
+    before_hook "4_helm_repo_add" {
+          commands = ["${get_terraform_commands_that_need_locking()}"]
+          execute = [
+            "helm", "repo", "add", "lsstsqre",
+            "https://lsst-sqre.github.io/charts/"
+          ]
+          run_on_error = false
+        }
+
 
     extra_arguments "tls" {
       commands = ["${get_terraform_commands_that_need_vars()}"]
@@ -86,3 +94,5 @@ grafana_admin_user = ""
 grafana_admin_pass = ""
 influxdb_admin_user = ""
 influxdb_admin_pass = ""
+github_user = ""
+github_token = ""
