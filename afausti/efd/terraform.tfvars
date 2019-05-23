@@ -4,9 +4,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::https://github.com/lsst-sqre/terraform-efd-kafka.git//?ref=master"
-    # for development it is useful to use a local path
-    # source = "../../../terraform-efd-kafka"
+    source = "git::https://github.com/lsst-sqre/terraform-efd-k3s.git//?ref=master"
     extra_arguments "moar_faster" {
       commands = ["apply"]
       arguments = ["-parallelism=25"]
@@ -55,7 +53,7 @@ terragrunt = {
       commands = ["${get_terraform_commands_that_need_locking()}"]
       execute = [
         "helm", "repo", "add", "confluentinc",
-        "https://raw.githubusercontent.com/lsst-sqre/cp-helm-charts/master"
+      	"https://raw.githubusercontent.com/lsst-sqre/cp-helm-charts/master"  
       ]
       run_on_error = false
     }
@@ -84,15 +82,25 @@ terragrunt = {
   } # terraform
 }
 
-env_name = ""
-gke_version = "1.11.6-gke.3"
+kubeconfig_filename = "/home/afausti/k3s.yaml"
+env_name = "test"
 dns_enable = true
+dns_overwrite = true
+prometheus_oauth_client_id = ""
+prometheus_oauth_client_secret= ""
+prometheus_oauth_github_org = "lsst-sqre"
 grafana_oauth_client_id = ""
 grafana_oauth_client_secret = ""
-grafana_oauth_team_ids = ""
+grafana_oauth_team_ids = "1936535"
 grafana_admin_user = ""
 grafana_admin_pass = ""
 influxdb_admin_user = ""
 influxdb_admin_pass = ""
-github_user = ""
+influxdb_telegraf_pass = ""
+github_user = "sqre-user"
 github_token = ""
+influxdb_disk_size = "15Gi"
+storage_class = "local-path"
+enable_telegraf_daemonset = false
+kafka_loadbalancers = 1 	
+
