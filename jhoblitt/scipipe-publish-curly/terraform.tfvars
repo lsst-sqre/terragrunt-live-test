@@ -43,7 +43,14 @@ terragrunt = {
   } # terraform
 }
 
+aws_zone_id = "Z3TH0HRSNU67AM"
 dns_enable = true
+domain_name = "lsst.codes"
 env_name = "jhoblitt-curly"
+#gke_version = "1.12"
+google_project = "plasma-geode-127520"
+google_region =  "us-central1"
+google_zone = "us-central1-b"
+grafana_oauth_team_ids = "1936535"
 pkgroot_storage_size = "100Gi"
-google_zone = "us-central1-d"
+prometheus_oauth_github_org = "lsst-sqre"
