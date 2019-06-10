@@ -6,16 +6,6 @@ terragrunt = {
   terraform {
     source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=master"
 
-    before_hook "make" {
-      commands = ["init", "init-from-module"]
-
-      run_on_error = false
-
-      execute = [
-        "bash", "-c", "cd ${get_tfvars_dir()}; make"
-      ]
-    }
-
     # set HELM_HOME to prevent sharing helm state between deployments
     extra_arguments "helm_vars" {
       commands = ["${get_terraform_commands_that_need_vars()}"]
