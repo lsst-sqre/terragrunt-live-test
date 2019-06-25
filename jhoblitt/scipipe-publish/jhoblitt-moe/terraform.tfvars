@@ -4,7 +4,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=3.1.0"
+    source = "git::https://github.com/lsst-sqre/terraform-scipipe-publish.git//tf/?ref=3.2.0"
 
     # set HELM_HOME to prevent sharing helm state between deployments
     extra_arguments "helm_vars" {
